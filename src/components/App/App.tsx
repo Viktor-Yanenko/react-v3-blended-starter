@@ -43,8 +43,8 @@ export default function App() {
       </header>
         {isFetching && <div>...loading</div>}
       {isModalOpen && <Modal onClose={closeModal}><PostForm onClose={closeModal}/></Modal>}
-      {/* {selectedPost && <Modal onClose={closeModal}><EditPostForm initialData={selectedPost}/></Modal>} */}
-      {isSuccess && data.posts.length > 1 && <PostList posts={data.posts} />}
+      {isSuccess && data.posts.length > 1 && <PostList posts={data.posts} onEdit={setSelectedPost} />}
+      {selectedPost && <Modal onClose={()=>setSelectedPost(null)}><EditPostForm initialData={selectedPost} onClose={()=>setSelectedPost(null)}/></Modal>}
     </div>
   );
 }
